@@ -22,10 +22,10 @@
 
 t_err	ft_cpu_count(int *out)
 {
-	SYSTEM_INFO	sysInfo;
+	SYSTEM_INFO	system_into;
 
-	GetSystemInfo(&sysInfo);
-	*out = sysInfo.dwNumberOfProcessors;
+	GetSystemInfo(&system_into);
+	*out = system_into.dwNumberOfProcessors;
 	return (false);
 }
 
@@ -33,11 +33,11 @@ t_err	ft_cpu_count(int *out)
 
 t_err	ft_cpu_count(int *out)
 {
-	const long cpuCount = sysconf(_SC_NPROCESSORS_ONLN);
+	const long	cpu_count = sysconf(_SC_NPROCESSORS_ONLN);
 
-	if (cpuCount < 0)
-		return true;
-	*out = (int)cpuCount;
+	if (cpu_count < 0)
+		return (true);
+	*out = (int)cpu_count;
 	return (false);
 }
 
